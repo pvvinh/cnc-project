@@ -12,8 +12,8 @@ mysql_select_db($dbdatabase, $db);
 if($_POST['submit']) {
 $sql = "SELECT * FROM users WHERE username = '" . $_POST['username'] . "' AND password = '" . $_POST['password'] . "';";
 	
-	$result = mysql_query($sql);
-	$numrows = mysql_num_rows($result);
+	$result = mysqli_query($sql);
+	$numrows = mysqli_num_rows($result);
 		
 	if($numrows == 1) {	
 		$row = mysql_fetch_assoc($result);
