@@ -8,11 +8,11 @@ if(isset($_SESSION['ADMIN']) == TRUE) {
 }
 
 $catsql = "SELECT * FROM categories;";
-$catresult = mysql_query($catsql);
+$catresult = mysqli_query($db, $catsql);
 	
 echo "<table cellspacing=0>";
 
-while($catrow = mysql_fetch_assoc($catresult)) {
+while($catrow = mysqli_fetch_assoc($catresult)) {
 	echo "<tr class='head'><td colspan=2>";
 
 	if($_SESSION['ADMIN']) {
@@ -24,7 +24,7 @@ while($catrow = mysql_fetch_assoc($catresult)) {
 	echo "<tr>";
 
 	$forumsql = "SELECT * FROM forums WHERE cat_id = " . $catrow['id'] . ";";
-	$forumresult = mysql_query($forumsql);
+	$forumresult = mysqli_query($forumsql);
 	$forumnumrows = mysql_num_rows($forumresult);
 	
 	if($forumnumrows == 0) {
